@@ -1,6 +1,6 @@
 Revision history for Perl extension FormValidator::Simple.
 
-0.26  Mon Jun 22 14:30:00 2009
+0.27  Mon Jun 22 14:30:00 2009
     - bugfix: on single apache process, 'each' command in Profile.pm breaks
       hash reference.
       Thanks to asannou.

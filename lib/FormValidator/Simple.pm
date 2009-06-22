@@ -12,7 +12,7 @@ use FormValidator::Simple::Validator;
 use FormValidator::Simple::Constants;
 use FormValidator::Simple::Messages;
 
-our $VERSION = '0.26';
+our $VERSION = '0.27';
 
 __PACKAGE__->mk_classaccessors(qw/data prof results/);
 __PACKAGE__->mk_classaccessor( messages => FormValidator::Simple::Messages->new );
