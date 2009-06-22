@@ -47,7 +47,8 @@ sub set_keys {
     my ($self, $keys) = @_;
     if (ref $keys) {
         if (ref $keys eq 'HASH') {
-            my ($name, $params) = each %$keys;
+            my ($name) = keys %$keys;
+            my $params = $keys->{$name};
             $self->name($name);
             if(ref $params) {
                 $self->keys( $params   );
