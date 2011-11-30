@@ -267,15 +267,18 @@ sub EQUAL_TO {
 
 sub BETWEEN {
     my ($self, $params, $args) = @_;
+
     my $data = $params->[0];
     my $start = $args->[0];
     my $end   = $args->[1];
-    unless ( defined($start) && $start =~ /^\d+$/ && defined($end) && $end =~ /^\d+$/ ) {
+
+    my $regex = qr/^[-+]?[0-9]+(:?\.[0-9]+)?$/;
+    unless ( defined($start) && $start =~ /$regex/ && defined($end) && $end =~ /$regex/ ) {
         FormValidator::Simple::Exception->throw(
-        qq/Validation BETWEEN needs two numeric arguments./
+            qq/Validation BETWEEN needs two numeric arguments./
         );
     }
-    return FALSE unless $data =~ /^\d+$/;
+    return FALSE unless $data =~ /$regex/;
     return ( $data >= $start && $data <= $end ) ? TRUE : FALSE;
 }
 
