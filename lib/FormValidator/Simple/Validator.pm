@@ -230,12 +230,13 @@ sub GREATER_THAN {
     my ($self, $params, $args) = @_;
     my $data = $params->[0];
     my $target = $args->[0];
-    unless ( defined $target && $target =~ /^\d+$/ ) {
+    my $regex = qr/^[-+]?[0-9]+(:?\.[0-9]+)?$/;
+    unless ( defined $target && $target =~ /$regex/ ) {
         FormValidator::Simple::Exception->throw(
-        qq/Validation GREATER_THAN needs a numeric argument./
+            qq/Validation GREATER_THAN needs a numeric argument./
         );
     }
-    return FALSE unless $data =~ /^\d+$/;
+    return FALSE unless $data =~ /$regex/;
     return ( $data > $target ) ? TRUE : FALSE;
 }
 
@@ -243,12 +244,13 @@ sub LESS_THAN {
     my ($self, $params, $args) = @_;
     my $data = $params->[0];
     my $target = $args->[0];
-    unless ( defined $target && $target =~ /^\d+$/ ) {
+    my $regex = qr/^[-+]?[0-9]+(:?\.[0-9]+)?$/;
+    unless ( defined $target && $target =~ /$regex/ ) {
         FormValidator::Simple::Exception->throw(
-        qq/Validation LESS_THAN needs a numeric argument./
+            qq/Validation LESS_THAN needs a numeric argument./
         );
     }
-    return FALSE unless $data =~ /^\d+$/;
+    return FALSE unless $data =~ /$regex/;
     return ( $data < $target ) ? TRUE : FALSE;
 }
 
@@ -256,12 +258,13 @@ sub EQUAL_TO {
     my ($self, $params, $args) = @_;
     my $data = $params->[0];
     my $target = $args->[0];
-    unless ( defined $target && $target =~ /^\d+$/ ) {
+    my $regex = qr/^[-+]?[0-9]+(:?\.[0-9]+)?$/;
+    unless ( defined $target && $target =~ /$regex/ ) {
         FormValidator::Simple::Exception->throw(
-        qq/Validation EQUAL_TO needs a numeric argument./
+            qq/Validation EQUAL_TO needs a numeric argument./
         );
     }
-    return FALSE unless $data =~ /^\d+$/;
+    return FALSE unless $data =~ /$regex/;
     return ( $data == $target ) ? TRUE : FALSE;
 }
 
@@ -270,12 +273,13 @@ sub BETWEEN {
     my $data = $params->[0];
     my $start = $args->[0];
     my $end   = $args->[1];
-    unless ( defined($start) && $start =~ /^\d+$/ && defined($end) && $end =~ /^\d+$/ ) {
+    my $regex = qr/^[-+]?[0-9]+(:?\.[0-9]+)?$/;
+    unless ( defined($start) && $start =~ /$regex/ && defined($end) && $end =~ /$regex/ ) {
         FormValidator::Simple::Exception->throw(
-        qq/Validation BETWEEN needs two numeric arguments./
+            qq/Validation BETWEEN needs two numeric arguments./
         );
     }
-    return FALSE unless $data =~ /^\d+$/;
+    return FALSE unless $data =~ /$regex/;
     return ( $data >= $start && $data <= $end ) ? TRUE : FALSE;
 }
 
