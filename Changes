@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Simple.
 
+0.29  Thu Dec 08 15:45:00 2011
+    - better BETWEEN check: allow float decimal
+      https://github.com/lyokato/p5-formvalidator-simple/pull/1
+
 0.28  Mon Jun 22 14:30:00 2009
     - bugfix: on single apache process, 'each' command in Profile.pm breaks
       hash reference.
